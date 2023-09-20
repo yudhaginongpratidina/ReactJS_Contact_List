@@ -3,10 +3,10 @@
 import React from "react";
 
 // IMPORT COMPONENT
-import ContactList from '../Components/ContactList';
+import ContactList from './ContactList';
 
 // IMPORT DATA KONTAK
-import { getData } from '../data';
+import { getData } from '../utils/data';
 
 function ContactApp() {
     const contacts = getData();

@@ -2,8 +2,11 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-// IMPORT PAGES
-import ContactApp from './Pages/ContactApp';
+// IMPORT STYLING
+import './styles/style.css';
+
+// IMPORT COMPONENR
+import ContactApp from './Components/ContactApp';
  
 // CARI ELEMEN DENGAN ID ROOR
 const root = createRoot(document.getElementById('root'));
