@@ -4,6 +4,7 @@ import React from "react";
 
 // IMPORT COMPONENT
 import ContactList from './ContactList';
+import ContactInput from './ContactInput';
 
 // IMPORT DATA KONTAK
 import { getData } from '../utils/data';
@@ -16,21 +17,41 @@ class ContactApp extends React.Component {
     }
   
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
+    this.onAddContactHandler = this.onAddContactHandler.bind(this);
   }
   
   onDeleteHandler(id) {
     const contacts = this.state.contacts.filter(contact => contact.id !== id);
     this.setState({ contacts });
   }
+
+  onAddContactHandler({ name, tag }) {
+    this.setState((prevState) => {
+      return {
+        contacts: [
+          ...prevState.contacts,
+          {
+            id: +new Date(),
+            name,
+            tag,
+            imageUrl: '/images/default.jpg',
+          }
+        ]
+      }
+    });
+  }
   
   render() {
     return (
       <div className="contact-app">
-        <h1>Daftar Kontak</h1>
+        <h1>Aplikasi Kontak</h1>
+        <h2>Tambah Kontak</h2>
+        <ContactInput addContact={this.onAddContactHandler} />
+        <h2>Daftar Kontak</h2>
         <ContactList contacts={this.state.contacts} onDelete={this.onDeleteHandler} />
       </div>
     );
   }
  }
     
-   export default ContactApp;
+  export default ContactApp;
